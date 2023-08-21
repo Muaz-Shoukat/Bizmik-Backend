@@ -14,10 +14,10 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     crop: "scale",
   });
 
-  console.log("here2");
+  
 
   const { name, email, password } = req.body;
-  console.log(req.body);
+  
 
   const user = await User.create({
     name,
@@ -54,6 +54,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 exports.logoutUser = catchAsyncErrors(async (req, res, next) => {
   res.cookie("token", null, {
     httpOnly: true,
+     sameSite: 'none', secure: true ,
     expires: new Date(Date.now()),
   });
 
