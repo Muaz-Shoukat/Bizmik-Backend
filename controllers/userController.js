@@ -7,13 +7,13 @@ const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  console.log("here1");
+  
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatars",
     width: 150,
     crop: "scale",
   });
-  
+
   console.log("here2");
 
   const { name, email, password } = req.body;
